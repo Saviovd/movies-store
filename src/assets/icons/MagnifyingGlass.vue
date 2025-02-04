@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="stroke-gray-700 p-1 flex items-center justify-center"
+    class="flex items-center justify-center stroke-gray-700 p-1"
     data-slot="icon"
     fill="none"
     stroke-width="1.5"

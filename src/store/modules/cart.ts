@@ -3,11 +3,20 @@ import { Product } from '../../types/movie'
 
 interface CartState {
   cart: Product[]
+  isCartVisible: boolean
+}
+
+const getCartFromStorage = (): Product[] => {
+  if (typeof window !== 'undefined') {
+    return JSON.parse(localStorage.getItem('cart') || '[]')
+  }
+  return []
 }
 
 const cart: Module<CartState, unknown> = {
   state: {
-    cart: JSON.parse(localStorage.getItem('cart') || '[]')
+    cart: getCartFromStorage(),
+    isCartVisible: false
   },
   mutations: {
     ADD_TO_CART(state, product: Product) {
@@ -20,12 +29,23 @@ const cart: Module<CartState, unknown> = {
     },
     CLEAR_CART(state) {
       state.cart = []
-      localStorage.clear()
+      localStorage.removeItem('cart')
+    },
+    TOGGLE_CART(state) {
+      state.isCartVisible = !state.isCartVisible
+    },
+    SHOW_CART(state) {
+      state.isCartVisible = true
+    },
+    HIDE_CART(state) {
+      state.isCartVisible = false
     }
   },
   getters: {
     cartItems: (state) => state.cart,
-    isInCart: (state) => (title: string) => state.cart.some((item) => item.title === title)
+    totalPrice: (state) => state.cart.reduce((acc, item) => acc + item.price, 0),
+    isInCart: (state) => (title: string) => state.cart.some((item) => item.title === title),
+    isCartVisible: (state) => state.isCartVisible
   }
 }
 
