@@ -7,9 +7,9 @@
           :class="isInFavorites ? 'fill-red-500 stroke-red-500' : 'fill-transparent stroke-black'"
         />
       </button>
-      <img :src="image" :alt="title" class="h-60 w-full rounded-md object-cover" v-if="image" />
-      <div v-else class="bg-gray-300 p-24">
-        <ImageNotFound />
+      <img :src="image" :alt="title" class="h-64 w-full rounded-md object-cover" v-if="image" />
+      <div v-else class="flex h-64 items-center justify-center bg-gray-300">
+        <ImageNotFound class="h-2w-16 w-16 fill-gray-500" />
       </div>
       <p class="absolute bottom-1 m-auto w-full text-center text-sm font-medium opacity-75">
         {{ releaseDate }}
@@ -24,7 +24,7 @@
         </div>
         <p class="text-sm opacity-75">{{ genre }}</p>
       </div>
-      <p class="mt-2 text-center text-lg font-semibold text-blue-400">{{ formattedPrice }}</p>
+      <p class="mt-2 text-center text-lg font-semibold text-blue-400">{{ formatted }}</p>
     </div>
     <button
       @click="toggleCart"
@@ -37,12 +37,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import { useCart } from '../composables/useCart'
 import { useFavorites } from '../composables/useFavorites'
 import ImageNotFound from '../assets/icons/ImageNotFound.vue'
 import SolidStar from '../assets/icons/SolidStar.vue'
 import SolidHeart from '../assets/icons/SolidHeart.vue'
+import { usePriceFormatter } from '../composables/usePriceFormatter'
 
 export default defineComponent({
   components: {
@@ -66,11 +67,11 @@ export default defineComponent({
       props.price!
     )
 
-    const formattedPrice = computed(() =>
-      new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(props.price!)
-    )
+    const { formattedPrice } = usePriceFormatter()
 
-    return { isInCart, toggleCart, isInFavorites, toggleFavorites, formattedPrice }
+    const formatted = formattedPrice(props.price || 0)
+
+    return { isInCart, toggleCart, isInFavorites, toggleFavorites, formatted }
   }
 })
 </script>
