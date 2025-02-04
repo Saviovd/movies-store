@@ -5,7 +5,7 @@
     :enter="{ x: '0', opacity: 1 }"
     :leave="{ x: '100%', opacity: 0 }"
     transition="ease-in-out"
-    class="fixed bottom-0 right-0 w-1/4 h-[calc(100%-72px)] overflow-x-hidden border-l border-gray-300 bg-white p-4 shadow-lg"
+    class="fixed bottom-0 right-0 h-[calc(100%-72px)] w-1/4 overflow-x-hidden border-l border-gray-300 bg-white p-4 shadow-lg"
   >
     <div>
       <h2 class="mb-4 text-xl font-semibold">Meu Carrinho</h2>

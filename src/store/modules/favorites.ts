@@ -1,14 +1,22 @@
 import { Module } from 'vuex'
 import { Product } from '../../types/movie'
 
-interface FavoriteState {
+interface FavoritesState {
   favorites: Product[]
+  isFavoritesVisible: boolean
 }
 
-const favorites: Module<FavoriteState, unknown> = {
-  namespaced: true,
+const getFavoritesFromStorage = (): Product[] => {
+  if (typeof window !== 'undefined') {
+    return JSON.parse(localStorage.getItem('favorites') || '[]')
+  }
+  return []
+}
+
+const favorites: Module<FavoritesState, unknown> = {
   state: {
-    favorites: JSON.parse(localStorage.getItem('favorites') || '[]')
+    favorites: getFavoritesFromStorage(),
+    isFavoritesVisible: false
   },
   mutations: {
     ADD_TO_FAVORITES(state, product: Product) {
@@ -21,13 +29,24 @@ const favorites: Module<FavoriteState, unknown> = {
     },
     CLEAR_FAVORITES(state) {
       state.favorites = []
-      localStorage.clear()
+      localStorage.removeItem('favorites')
+    },
+    TOGGLE_FAVORITES(state) {
+      state.isFavoritesVisible = !state.isFavoritesVisible
+    },
+    SHOW_FAVORITES(state) {
+      state.isFavoritesVisible = true
+    },
+    HIDE_FAVORITES(state) {
+      state.isFavoritesVisible = false
     }
   },
   getters: {
     favoriteItems: (state) => state.favorites,
+    totalPrice: (state) => state.favorites.reduce((acc, item) => acc + item.price, 0),
     isInFavorites: (state) => (title: string) =>
-      state.favorites.some((item) => item.title === title)
+      state.favorites.some((item) => item.title === title),
+    isFavoritesVisible: (state) => state.isFavoritesVisible
   }
 }
 
