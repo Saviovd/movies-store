@@ -5,22 +5,22 @@
     :enter="{ x: '0', opacity: 1 }"
     :leave="{ x: '100%', opacity: 0 }"
     transition="ease-in-out"
-    class="fixed bottom-0 right-0 h-[calc(100%-72px)] w-1/4 overflow-x-hidden border-l border-gray-300 bg-white p-4 shadow-lg"
+    class="fixed bottom-0 right-0 h-[calc(100%-128px)] w-3/4 overflow-x-hidden border-l border-gray-300 bg-white p-4 shadow-lg sm:h-[calc(100%-68px)] sm:w-1/2 sm:min-w-[380px] lg:w-1/4"
   >
     <div>
-      <h2 class="mb-4 text-xl font-semibold">Meu Carrinho</h2>
+      <h2 class="mb-2 text-xl font-semibold sm:mb-4">Meu Carrinho</h2>
 
       <button
         v-if="cartItems.length > 0"
         @click="clearCart"
-        class="absolute right-4 top-4 font-medium text-[#6558f5] underline hover:text-[#584ec5]"
+        class="absolute right-4 top-4 text-sm font-medium text-[#6558f5] underline hover:text-[#584ec5] sm:text-base"
       >
         Esvaziar
       </button>
 
       <p v-else>O carrinho está vazio.</p>
 
-      <div v-if="cartItems.length > 0" class="flex w-full flex-col gap-4">
+      <div v-if="cartItems.length > 0" class="flex w-full flex-col gap-2">
         <HorizontalCard
           v-for="item in cartItems"
           :key="item.id"
