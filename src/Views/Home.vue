@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen">
     <HeaderComponent :search="searchQuery" @update:search="searchQuery = $event" />
-    <main class="flex h-full items-start justify-center gap-4 py-32">
+    <main class="flex h-full items-start justify-center gap-4 pt-32">
       <div class="flex justify-center gap-16">
         <VerticalCard
           v-for="movie in movies"

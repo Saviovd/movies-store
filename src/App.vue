@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import HeaderComponent from './components/HeaderComponent.vue'
 import LateralCart from './components/LateralCart.vue'
 import LateralFavorites from './components/LateralFavorites.vue'

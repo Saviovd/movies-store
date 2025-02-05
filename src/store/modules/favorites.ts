@@ -43,7 +43,6 @@ const favorites: Module<FavoritesState, unknown> = {
   },
   getters: {
     favoriteItems: (state) => state.favorites,
-    totalPrice: (state) => state.favorites.reduce((acc, item) => acc + item.price, 0),
     isInFavorites: (state) => (title: string) =>
       state.favorites.some((item) => item.title === title),
     isFavoritesVisible: (state) => state.isFavoritesVisible

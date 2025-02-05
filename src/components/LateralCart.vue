@@ -42,7 +42,6 @@
       >
         Finalizar compra
       </button>
-      
     </div>
   </div>
 </template>
@@ -66,13 +65,13 @@ export default defineComponent({
         alert('o carrinho não pode estar vazio!')
         return
       }
+      store.commit('HIDE_CART')
       router.push('/checkout')
     }
 
     return {
       cartItems: computed(() => store.getters.cartItems),
       totalPrice: computed(() => store.getters.totalPrice),
-      toggleCart: () => store.commit('TOGGLE_CART'),
       removeFromCart: (title: string) => store.commit('REMOVE_FROM_CART', title),
       clearCart: () => store.commit('CLEAR_CART'),
       formattedPrice,
