@@ -8,19 +8,22 @@
       :handleSubmit="handleSubmit"
       :removeFromCart="removeFromCart"
     />
+    <Modal :isOpen="showModal" />
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
 import { usePriceFormatter } from '../composables/usePriceFormatter'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import CheckoutForm from '../components/CheckoutForm.vue'
 import CartSummary from '../components/CartSummary.vue'
+import Modal from '../components/ConfirmModal.vue'
 
 export default {
   name: 'CheckoutView',
-  components: { CheckoutForm, CartSummary },
+  components: { CheckoutForm, CartSummary, Modal },
   data() {
     return {
       formData: {
@@ -120,20 +123,21 @@ export default {
           cidade: ''
         }
 
-        this.clearCart()
+        this.showModal = true
       }
     }
   },
   setup() {
     const store = useStore()
     const { formattedPrice } = usePriceFormatter()
+    const showModal = ref(false)
 
     return {
       cartItems: computed(() => store.getters.cartItems),
       removeFromCart: (title) => store.commit('REMOVE_FROM_CART', title),
       totalPrice: computed(() => store.getters.totalPrice),
-      clearCart: () => store.commit('CLEAR_CART'),
-      formattedPrice
+      formattedPrice,
+      showModal
     }
   }
 }
