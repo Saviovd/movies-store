@@ -37,11 +37,12 @@
         <span class="pr-2 text-lg font-bold">{{ formattedPrice(totalPrice) }}</span>
       </div>
       <button
-        @click="toggleCart"
+        @click="goToCheckout"
         class="mt-4 w-full rounded-sm bg-blue-500 py-2 font-semibold text-white hover:bg-blue-600"
       >
         Finalizar compra
       </button>
+      
     </div>
   </div>
 </template>
@@ -49,6 +50,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import HorizontalCard from './HorizontalCard.vue'
 import { usePriceFormatter } from '../composables/usePriceFormatter'
 
@@ -56,7 +58,16 @@ export default defineComponent({
   components: { HorizontalCard },
   setup() {
     const store = useStore()
+    const router = useRouter()
     const { formattedPrice } = usePriceFormatter()
+
+    const goToCheckout = () => {
+      if (store.getters.cartItems.length === 0) {
+        alert('o carrinho não pode estar vazio!')
+        return
+      }
+      router.push('/checkout')
+    }
 
     return {
       cartItems: computed(() => store.getters.cartItems),
@@ -64,7 +75,8 @@ export default defineComponent({
       toggleCart: () => store.commit('TOGGLE_CART'),
       removeFromCart: (title: string) => store.commit('REMOVE_FROM_CART', title),
       clearCart: () => store.commit('CLEAR_CART'),
-      formattedPrice
+      formattedPrice,
+      goToCheckout
     }
   }
 })

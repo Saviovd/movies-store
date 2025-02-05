@@ -2,7 +2,7 @@
   <header
     class="fixed left-0 right-0 top-0 flex items-center justify-between bg-green-200 px-12 py-4"
   >
-    <h1 class="text-xl font-bold">MovieStore</h1>
+    <a href="/" class="text-xl font-bold">MovieStore</a>
 
     <div class="flex w-1/3 rounded-sm shadow-2xl">
       <input
