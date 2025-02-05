@@ -9,7 +9,10 @@
   >
     <h2 class="mb-4 text-xl font-semibold">Meus Favoritos</h2>
     <div v-if="favoriteItems.length > 0" class="absolute right-4 top-4">
-      <button @click="clearFavorites" class="text-decoration-line underline font-medium text-[#6558f5] hover:text-[#584ec5]">
+      <button
+        @click="clearFavorites"
+        class="text-decoration-line font-medium text-[#6558f5] underline hover:text-[#584ec5]"
+      >
         Esvaziar
       </button>
     </div>

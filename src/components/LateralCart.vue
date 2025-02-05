@@ -13,7 +13,7 @@
       <button
         v-if="cartItems.length > 0"
         @click="clearCart"
-        class="absolute right-4 top-4 underline font-medium text-[#6558f5] hover:text-[#584ec5]"
+        class="absolute right-4 top-4 font-medium text-[#6558f5] underline hover:text-[#584ec5]"
       >
         Esvaziar
       </button>
@@ -38,7 +38,7 @@
       </div>
       <button
         @click="goToCheckout"
-        class="mt-4 w-full rounded-sm py-2 font-semibold text-white bg-[#6558f5] hover:bg-[#584ec5]"
+        class="mt-4 w-full rounded-sm bg-[#6558f5] py-2 font-semibold text-white hover:bg-[#584ec5]"
       >
         Finalizar compra
       </button>

@@ -1,42 +1,39 @@
 <template>
   <header
-    class="fixed left-0 right-0 top-0 flex items-center justify-between bg-[#d1efec] px-12 py-4"
+    class="fixed left-0 right-0 top-0 flex flex-col flex-wrap items-center justify-between bg-[#d1efec] p-4 pb-8 sm:flex-row sm:px-8 sm:pb-4 md:px-12"
   >
     <a href="/" class="text-xl font-bold">MovieStore</a>
 
-    <div class="flex w-1/3 rounded-sm shadow-2xl">
-      <input
-        type="text"
-        placeholder="Buscar filmes..."
-        class="custom-width rounded-l-md bg-slate-100 px-4 py-2 text-black outline-none"
-        v-model="searchQuery"
-        @input="$emit('update:search', searchQuery)"
-      />
-      <div class="h-10 w-10 rounded-r-md bg-slate-100">
-        <MagnifyingGlass />
+    <div class="my-3 mt-2 flex w-full justify-center sm:my-0 sm:w-1/3">
+      <div class="flex w-full min-w-[320px] max-w-md rounded-sm shadow-2xl">
+        <input
+          type="text"
+          placeholder="Pesquisa"
+          class="w-full rounded-l-md bg-slate-100 px-4 py-1 text-black outline-none"
+          v-model="searchQuery"
+          @input="$emit('update:search', searchQuery)"
+        />
+        <div class="flex h-full items-center justify-center rounded-r-md bg-slate-100">
+          <MagnifyingGlass class="w-8" />
+        </div>
       </div>
     </div>
 
-    <div class="flex gap-4">
-      <div
-        class="h-10 w-10 cursor-pointer rounded-r-md fill-white stroke-none"
-        @click="toggleFavorites"
-      >
-        <SolidHeart />
+    <div class="absolute bottom-1 right-4 mt-4 flex sm:static sm:mt-0 sm:gap-2">
+      <div class="cursor-pointer rounded-r-md fill-white stroke-none" @click="toggleFavorites">
+        <SolidHeart class="w-8 transition-colors hover:fill-gray-800 sm:w-9" />
       </div>
-      <div
-        class="relative h-10 w-10 cursor-pointer rounded-r-md fill-white stroke-none"
-        @click="toggleCart"
-      >
+      <div class="relative cursor-pointer rounded-r-md fill-white stroke-none" @click="toggleCart">
         <span
-          class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#fdf3d3] text-sm font-medium text-gray-600"
+          class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#fdf3d3] text-sm font-medium text-gray-600 sm:h-5 sm:w-5"
           >{{ cartItems.length }}</span
         >
-        <CartShopping />
+        <CartShopping class="w-8 transition-colors hover:fill-gray-800 sm:w-9" />
       </div>
     </div>
   </header>
 </template>
+''
 
 <script>
 import MagnifyingGlass from '../assets/icons/MagnifyingGlass.vue'

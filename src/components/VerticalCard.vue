@@ -4,7 +4,9 @@
       <button @click="toggleFavorites" class="absolute right-2 top-2 w-8">
         <SolidHeart
           class="w-8 transition"
-          :class="isInFavorites ? 'fill-gray-800 stroke-gray-800' : 'fill-transparent stroke-gray-800'"
+          :class="
+            isInFavorites ? 'fill-gray-800 stroke-gray-800' : 'fill-transparent stroke-gray-800'
+          "
         />
       </button>
       <img :src="image" :alt="title" class="h-64 w-full rounded-md object-cover" v-if="image" />
@@ -22,9 +24,9 @@
           <SolidStar class="w-4" />
           <span class="text-lg font-bold">{{ rating }}</span>
         </div>
-        <p class="text-sm opacity-75 font-medium">{{ genre }}</p>
+        <p class="text-sm font-medium opacity-75">{{ genre }}</p>
       </div>
-      <p class="mt-2 text-center text-md font-semibold">{{ formatted }}</p>
+      <p class="text-md mt-2 text-center font-semibold">{{ formatted }}</p>
     </div>
     <button
       @click="toggleCart"
