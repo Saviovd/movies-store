@@ -9,7 +9,7 @@
   >
     <h2 class="mb-4 text-xl font-semibold">Meus Favoritos</h2>
     <div v-if="favoriteItems.length > 0" class="absolute right-4 top-4">
-      <button @click="clearFavorites" class="text-decoration-line text-blue-600 underline">
+      <button @click="clearFavorites" class="text-decoration-line underline font-medium text-[#6558f5] hover:text-[#584ec5]">
         Esvaziar
       </button>
     </div>
@@ -40,32 +40,21 @@ export default defineComponent({
   setup() {
     const store = useStore()
 
-    const isFavoritesVisible = computed(() => store.getters.isFavoritesVisible)
     const favoriteItems = computed(() => store.getters.favoriteItems)
-    const totalPrice = computed(() => store.getters.totalPrice)
-
-    const toggleFavorites = () => {
-      store.commit(
-        isFavoritesVisible.value ? 'favorites/HIDE_FAVORITES' : 'favorites/SHOW_FAVORITES'
-      )
-    }
 
     const removeFromFavorites = (title: string) => {
-      store.commit('favorites/REMOVE_FROM_FAVORITES', title)
+      store.commit('REMOVE_FROM_FAVORITES', title)
     }
 
     const clearFavorites = () => {
-      store.commit('favorites/CLEAR_FAVORITES')
+      store.commit('CLEAR_FAVORITES')
     }
 
     const formattedPrice = (price: number) =>
       new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price)
 
     return {
-      isFavoritesVisible,
       favoriteItems,
-      totalPrice,
-      toggleFavorites,
       removeFromFavorites,
       clearFavorites,
       formattedPrice

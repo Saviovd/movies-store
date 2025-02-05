@@ -4,7 +4,7 @@
       <button @click="toggleFavorites" class="absolute right-2 top-2 w-8">
         <SolidHeart
           class="w-8 transition"
-          :class="isInFavorites ? 'fill-red-500 stroke-red-500' : 'fill-transparent stroke-black'"
+          :class="isInFavorites ? 'fill-gray-800 stroke-gray-800' : 'fill-transparent stroke-gray-800'"
         />
       </button>
       <img :src="image" :alt="title" class="h-64 w-full rounded-md object-cover" v-if="image" />
@@ -16,20 +16,20 @@
       </p>
     </div>
     <div>
-      <h2 class="mt-2 text-center text-lg font-semibold">{{ title }}</h2>
+      <h2 class="mt-2 text-center text-lg font-bold">{{ title }}</h2>
       <div class="flex items-center justify-center gap-7">
         <div class="flex items-center gap-1 text-sm opacity-75">
           <SolidStar class="w-4" />
           <span class="text-lg font-bold">{{ rating }}</span>
         </div>
-        <p class="text-sm opacity-75">{{ genre }}</p>
+        <p class="text-sm opacity-75 font-medium">{{ genre }}</p>
       </div>
-      <p class="mt-2 text-center text-lg font-semibold text-blue-400">{{ formatted }}</p>
+      <p class="mt-2 text-center text-md font-semibold">{{ formatted }}</p>
     </div>
     <button
       @click="toggleCart"
-      class="mt-2 w-full rounded-sm py-2 font-semibold text-white"
-      :class="isInCart ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'"
+      class="mt-2 w-full rounded-sm py-2 font-semibold text-white transition-colors"
+      :class="isInCart ? 'bg-red-500 hover:bg-red-600' : 'bg-[#6558f5] hover:bg-[#584ec5]'"
     >
       {{ isInCart ? 'Remover' : 'Adicionar' }}
     </button>

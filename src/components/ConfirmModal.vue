@@ -5,7 +5,7 @@
       <p class="mb-6 text-center">Sua compra foi finalizada com sucesso.</p>
       <a
         href="/"
-        class="block w-full rounded-sm bg-blue-600 px-4 py-2 text-center text-white transition-colors hover:bg-blue-700"
+        class="block w-full rounded-sm px-4 py-2 text-center text-white transition-colors bg-[#6558f5] hover:bg-[#584ec5]"
         @click="clearCart"
       >
         Ir para a loja

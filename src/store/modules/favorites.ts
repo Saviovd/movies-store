@@ -28,6 +28,7 @@ const favorites: Module<FavoritesState, unknown> = {
       localStorage.setItem('favorites', JSON.stringify(state.favorites))
     },
     CLEAR_FAVORITES(state) {
+      console.log('teste')
       state.favorites = []
       localStorage.removeItem('favorites')
     },

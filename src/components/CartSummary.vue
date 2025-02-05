@@ -24,7 +24,7 @@
       </div>
       <button
         type="submit"
-        class="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        class="w-full rounded-md px-4 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 bg-[#6558f5] hover:bg-[#584ec5]"
         @click.prevent="handleSubmit"
       >
         Finalizar

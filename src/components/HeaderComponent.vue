@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed left-0 right-0 top-0 flex items-center justify-between bg-green-200 px-12 py-4"
+    class="fixed left-0 right-0 top-0 flex items-center justify-between bg-[#d1efec] px-12 py-4"
   >
     <a href="/" class="text-xl font-bold">MovieStore</a>
 
@@ -29,7 +29,7 @@
         @click="toggleCart"
       >
         <span
-          class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-100 text-sm font-medium text-gray-600"
+          class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#fdf3d3] text-sm font-medium text-gray-600"
           >{{ cartItems.length }}</span
         >
         <CartShopping />
