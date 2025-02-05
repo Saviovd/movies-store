@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen">
     <HeaderComponent :search="searchQuery" @update:search="searchQuery = $event" />
-    <!-- <router-view /> -->
+    <router-view />
     <LateralCart v-if="isCartVisible" />
     <LateralFavorites v-if="isFavoritesVisible" />
   </div>

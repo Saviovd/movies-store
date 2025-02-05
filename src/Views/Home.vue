@@ -1,8 +1,9 @@
 <template>
-  <div class="h-screen">
+  <div class="min-h-screen bg-gray-50">
     <HeaderComponent :search="searchQuery" @update:search="searchQuery = $event" />
-    <main class="flex h-full items-start justify-center gap-4 pt-32">
-      <div class="flex justify-center gap-16">
+
+    <main class="container mx-auto px-4 py-8 pt-40 sm:pt-32">
+      <div class="flex flex-wrap justify-center gap-4">
         <VerticalCard
           v-for="movie in movies"
           :key="movie.id"
@@ -12,6 +13,7 @@
           :releaseDate="movie.releaseDate"
           :rating="movie.rating"
           :price="movie.price"
+          class="w-[calc(50%-0.5rem)] max-w-[300px] sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1rem)]"
         />
       </div>
     </main>
