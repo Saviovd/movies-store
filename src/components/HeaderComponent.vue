@@ -1,10 +1,10 @@
 <template>
   <header
-    class="fixed left-0 right-0 top-0 flex flex-wrap items-center justify-between bg-[#d1efec] p-4 sm:px-8 md:px-12 z-10"
+    class="fixed left-0 right-0 top-0 z-10 flex flex-wrap items-center justify-between bg-[#d1efec] p-4 sm:px-8 md:px-12"
   >
-    <a href="/" class="w-full sm:w-auto text-center text-xl font-bold">MovieStore</a>
+    <a href="/" class="w-full text-center text-xl font-bold sm:w-auto">MovieStore</a>
 
-    <div class="my-2 w-[calc(100%-64px)] flex justify-center sm:my-0 sm:w-1/3">
+    <div class="my-2 flex w-[calc(100%-64px)] justify-center sm:my-0 sm:w-1/3">
       <div class="flex w-full min-w-[240px] max-w-md rounded-sm shadow-2xl">
         <input
           type="text"

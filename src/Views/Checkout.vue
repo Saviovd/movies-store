@@ -26,6 +26,9 @@ import Modal from '../components/ConfirmModal.vue'
 export default {
   name: 'CheckoutView',
   components: { CheckoutForm, CartSummary, Modal },
+  mounted() {
+    document.title = 'Checkout'
+  },
   data() {
     return {
       formData: {
