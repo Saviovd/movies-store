@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap items-start justify-center gap-4">
+  <div class="flex flex-wrap items-start justify-center gap-2 px-2 md:px-0 md:gap-4">
     <VerticalCard
       v-for="movie in movies"
       :key="movie.id"
