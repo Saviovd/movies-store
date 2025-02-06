@@ -29,3 +29,17 @@ export const fetchGenres = async () => {
     throw error
   }
 }
+
+export const searchMovies = async (query) => {
+  try {
+    const response = await api.get('/search/movie', {
+      params: {
+        query: query
+      }
+    })
+    return response.data.results
+  } catch (error) {
+    console.error('Erro ao buscar filmes:', error)
+    throw error
+  }
+}

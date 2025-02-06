@@ -11,7 +11,7 @@
           placeholder="Pesquisa"
           class="w-full rounded-l-md bg-slate-100 px-4 py-1 text-black outline-none"
           v-model="searchQuery"
-          @input="$emit('update:search', searchQuery)"
+          @input="$emit('update:search', $event.target.value)"
         />
         <div class="flex h-full items-center justify-center rounded-r-md bg-slate-100">
           <MagnifyingGlass class="w-8" />
@@ -33,7 +33,6 @@
     </div>
   </header>
 </template>
-''
 
 <script>
 import MagnifyingGlass from '../assets/icons/MagnifyingGlass.vue'
