@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 import HeaderComponent from '../components/HeaderComponent.vue'
 import VerticalCard from '../components/VerticalCard.vue'
+import { fetchPopularMovies, fetchGenres } from '../services/api'
 
 export default {
   name: 'HomeView',
@@ -37,31 +37,24 @@ export default {
       movies: []
     }
   },
-  mounted() {
+  async mounted() {
     document.title = 'Home'
-    this.fetchMovies()
+    await this.fetchMovies()
   },
   methods: {
     async fetchMovies() {
-      const apiKey = 'f507cc8a9a8d78ad57aaf86b43957b7d'
-      const moviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR`
-      const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=pt-BR`
-
       try {
-        const [moviesResponse, genresResponse] = await Promise.all([
-          axios.get(moviesUrl),
-          axios.get(genresUrl)
-        ])
+        const [movies, genres] = await Promise.all([fetchPopularMovies(), fetchGenres()])
 
-        const genres = genresResponse.data.genres.reduce((acc, genre) => {
+        const genreMap = genres.reduce((acc, genre) => {
           acc[genre.id] = genre.name
           return acc
         }, {})
 
-        this.movies = moviesResponse.data.results.map((movie) => ({
+        this.movies = movies.map((movie) => ({
           id: movie.id,
           title: movie.title,
-          genre_names: genres[movie.genre_ids[0]], // Pegando o nome do primeiro gênero
+          genre_names: genreMap[movie.genre_ids[0]],
           poster_path: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
           release_date: movie.release_date,
           vote_average: movie.vote_average,
