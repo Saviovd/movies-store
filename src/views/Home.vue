@@ -30,6 +30,9 @@ export default {
     HeaderComponent,
     VerticalCard
   },
+  mounted() {
+    document.title = 'Home'
+  },
   data() {
     return {
       searchQuery: '',

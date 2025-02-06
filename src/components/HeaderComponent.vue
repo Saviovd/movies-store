@@ -1,11 +1,11 @@
 <template>
   <header
-    class="fixed left-0 right-0 top-0 flex flex-col flex-wrap items-center justify-between bg-[#d1efec] p-4 pb-8 sm:flex-row sm:px-8 sm:pb-4 md:px-12"
+    class="fixed left-0 right-0 top-0 flex flex-wrap items-center justify-between bg-[#d1efec] p-4 sm:px-8 md:px-12 z-10"
   >
-    <a href="/" class="text-xl font-bold">MovieStore</a>
+    <a href="/" class="w-full sm:w-auto text-center text-xl font-bold">MovieStore</a>
 
-    <div class="my-3 mt-2 flex w-full justify-center sm:my-0 sm:w-1/3">
-      <div class="flex w-full min-w-[320px] max-w-md rounded-sm shadow-2xl">
+    <div class="my-2 w-[calc(100%-64px)] flex justify-center sm:my-0 sm:w-1/3">
+      <div class="flex w-full min-w-[240px] max-w-md rounded-sm shadow-2xl">
         <input
           type="text"
           placeholder="Pesquisa"
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="absolute bottom-1 right-4 mt-4 flex sm:static sm:mt-0 sm:gap-2">
+    <div class="flex items-center sm:static sm:mt-0 sm:gap-2">
       <div class="cursor-pointer rounded-r-md fill-white stroke-none" @click="toggleFavorites">
         <SolidHeart class="w-8 transition-colors hover:fill-gray-800 sm:w-9" />
       </div>
@@ -28,7 +28,7 @@
           class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#fdf3d3] text-sm font-medium text-gray-600 sm:h-5 sm:w-5"
           >{{ cartItems.length }}</span
         >
-        <CartShopping class="w-8 transition-colors hover:fill-gray-800 sm:w-9" />
+        <CartShopping class="w-6 transition-colors hover:fill-gray-800 sm:w-8" />
       </div>
     </div>
   </header>

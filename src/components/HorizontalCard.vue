@@ -51,7 +51,7 @@
         class="flex flex-shrink-0 items-center justify-end gap-2"
         :class="isFavorite && 'absolute bottom-2 right-0 md:static'"
       >
-        <button @click="toggleCart" class="font-se'mi'bold rounded-sm text-white transition-colors">
+        <button @click="toggleCart" class="transition-colors">
           <CartShopping
             v-if="isFavorite"
             class="h-5 w-5 p-0 transition-colors"
@@ -70,9 +70,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ImageNotFound from '../assets/icons/ImageNotFound.vue'
-import SolidTrash from '../assets/icons/SolidTrash.vue'
-import CartShopping from '../assets/icons/CartShopping.vue'
+import ImageNotFound from '@/assets/icons/ImageNotFound.vue'
+import SolidTrash from '@/assets/icons/SolidTrash.vue'
+import CartShopping from '@/assets/icons/CartShopping.vue'
 import { useCart } from '../composables/useCart'
 
 export default defineComponent({
