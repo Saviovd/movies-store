@@ -3,7 +3,7 @@
     class="flex w-full flex-col justify-between rounded-sm border border-black text-black shadow-lg transition-shadow hover:shadow-xl sm:w-48 md:w-56 lg:w-64"
   >
     <div class="relative border-b border-black">
-      <button @click="toggleFavorites" class="absolute right-2 top-2 z-10 w-8">
+      <button @click="toggleFavorites" class="absolute right-2 top-2 w-8">
         <SolidHeart
           class="w-8 transition"
           :class="

@@ -1,5 +1,7 @@
 <template>
-  <div class="grid w-2/5 flex-col items-start justify-center gap-6 px-8">
+  <div
+    class="grid w-full flex-col items-start justify-center gap-2 px-4 md:w-2/5 md:gap-6 md:pl-0 md:pr-8"
+  >
     <h2 class="text-3xl font-medium">Finalizar Compra</h2>
 
     <!-- Nome -->
@@ -15,7 +17,7 @@
       <span v-if="errors.nome" class="text-sm text-red-500">{{ errors.nome }}</span>
     </div>
 
-    <div class="flex gap-4">
+    <div class="flex gap-2 md:gap-4">
       <!-- CPF -->
       <div>
         <input
@@ -57,7 +59,7 @@
       <span v-if="errors.email" class="text-sm text-red-500">{{ errors.email }}</span>
     </div>
 
-    <div class="flex gap-4">
+    <div class="flex gap-2 md:gap-4">
       <!-- CEP -->
       <div>
         <input
@@ -86,7 +88,7 @@
       </div>
     </div>
 
-    <div class="flex gap-4">
+    <div class="flex gap-2 md:gap-4">
       <!-- Cidade -->
       <div>
         <input

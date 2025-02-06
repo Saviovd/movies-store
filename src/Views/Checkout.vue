@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-start justify-center gap-12 pt-32">
+  <div
+    class="flex flex-col items-center justify-center gap-12 pt-40 sm:pt-32 lg:flex-row lg:items-start lg:gap-0"
+  >
     <CheckoutForm :formData="formData" :errors="errors" @update:formData="updateFormData" />
     <CartSummary
       :cartItems="cartItems"

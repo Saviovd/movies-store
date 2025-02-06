@@ -1,12 +1,13 @@
 <template>
-  <div class="relative flex h-full w-2/5 flex-col pb-64">
-    <div class="flex items-center justify-start gap-4">
-      <div class="cart-item flex w-16 items-center justify-start gap-2">Imagem</div>
-      <h3 class="min-w-[180px]">Nome</h3>
-      <span class="min-w-[40px] text-center">Qtd</span>
-      <p class="w-max">Preço</p>
+  <div class="relative flex h-full w-full flex-col p-4 pb-56 md:w-1/2 md:max-w-[450px]">
+    <div class="mb-2 grid w-full grid-cols-4 gap-2 text-sm">
+      <p class="text-start">Imagem</p>
+      <p class="text-start">Nome</p>
+      <p class="px-3 text-center">Qtd</p>
+      <p class="text-end">Preço</p>
     </div>
-    <div v-if="cartItems.length > 0" class="flex w-full flex-col">
+
+    <div v-if="cartItems.length > 0" class="flex w-full flex-col gap-2">
       <HorizontalCard
         v-for="item in cartItems"
         :key="item.id"
@@ -17,9 +18,10 @@
         class="item border-b-2 border-gray-300"
       />
     </div>
+
     <div class="absolute bottom-6 left-0 w-full px-4">
       <div class="mb-10 flex items-center justify-between">
-        <span>Total:</span>
+        <span class="text-lg font-semibold">Total:</span>
         <span class="pr-2 text-3xl font-semibold">{{ formattedPrice(totalPrice) }}</span>
       </div>
       <button
